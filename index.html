@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id" class="dark h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nazgalery | Luxury Digital Gallery & Portfolio</title>
+    
+    <!-- Google Fonts: Cinzel & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        luxury: {
+                            bg: '#080808',
+                            card: '#121212',
+                            border: '#2a2418',
+                            gold: '#dfb259',
+                            goldLight: '#f3d596',
+                            muted: '#888888'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 30px -5px rgba(223, 178, 89, 0.25)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #2a2418; border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #dfb259; }
+
+        /* Glassmorphism 50% Blur & Luxury Glow */
+        .glass-luxury {
+            background: rgba(18, 18, 18, 0.50);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(223, 178, 89, 0.15);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #dfb259 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(223, 178, 89, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-luxury-bg text-slate-200 font-sans antialiased h-full flex flex-col justify-between selection:bg-luxury-gold selection:text-black" 
+      x-data="nazgaleryApp()" x-init="init()">
+
+    <!-- Ambient Gold Glow Background Elements -->
+    <div class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-luxury-gold/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-0 right-1/4 w-[600px] h-[600px] bg-luxury-gold/5 rounded-full blur-[180px] pointer-events-none -z-10"></div>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 glass-luxury border-b border-luxury-border/60 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div @click="activeTab = 'home'" class="flex items-center space-x-3 cursor-pointer group">
+                <div class="w-10 h-10 rounded-xl bg-luxury-card border border-luxury-gold/40 flex items-center justify-center group-hover:border-luxury-gold transition shadow-gold-glow">
+                    <i data-lucide="gem" class="w-5 h-5 text-luxury-gold"></i>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-lg tracking-widest text-white">NAZGALERY</span>
+                    <span class="block text-[9px] uppercase tracking-wider text-luxury-gold">Luxury Portfolio</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-xs font-medium tracking-wider uppercase text-slate-400">
+                <button @click="activeTab = 'home'" :class="activeTab === 'home' ? 'text-luxury-gold font-bold' : 'hover:text-white'" class="transition">Home</button>
+                <button @click="activeTab = 'about'" :class="activeTab === 'about' ? 'text-luxury-gold font-bold' : 'hover:text-white'" class="transition">About</button>
+                <button @click="activeTab = 'pricing'" :class="activeTab === 'pricing' ? 'text-luxury-gold font-bold' : 'hover:text-white'" class="transition">Pricing</button>
+                <button @click="activeTab = 'dashboard'" :class="activeTab === 'dashboard' ? 'text-luxury-gold font-bold' : 'hover:text-white'" class="transition">Dashboard</button>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="flex items-center space-x-3">
+                <button @click="activeTab = 'dashboard'" class="px-5 py-2 rounded-xl text-xs font-semibold tracking-wider uppercase bg-luxury-gold text-black hover:bg-luxury-goldLight transition shadow-gold-glow flex items-center space-x-2">
+                    <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+                    <span>Akses Dashboard</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-10">
+
+        <!-- ================= PAGE 1: HOME & ALBUM GALLERY ================= -->
+        <div x-show="activeTab === 'home'" x-transition.opacity class="space-y-16">
+            
+            <!-- Hero Section -->
+            <div class="text-center max-w-3xl mx-auto space-y-6 pt-6">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-luxury border border-luxury-gold/30 text-luxury-gold text-xs tracking-widest uppercase">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    <span>Eksklusif Digital Showcase</span>
+                </div>
+                <h1 class="font-serif text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+                    Koleksi Visual Mahakarya & <span class="gold-gradient-text">Album Kurasi</span>
+                </h1>
+                <p class="text-sm md:text-base text-slate-400 leading-relaxed font-light">
+                    Selamat datang di Nazgalery. Ruang pamer digital eksklusif yang memadukan fotografi sinematik, desain futuristik, dan arsitektur visual berkelas tinggi.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <a href="#galeri-section" class="px-8 py-3.5 rounded-xl bg-luxury-gold text-black font-semibold text-xs uppercase tracking-widest hover:bg-luxury-goldLight transition shadow-gold-glow">
+                        Jelajahi Galeri
+                    </a>
+                    <button @click="activeTab = 'about'" class="px-8 py-3.5 rounded-xl glass-luxury text-slate-200 font-semibold text-xs uppercase tracking-widest hover:border-luxury-gold transition">
+                        Tentang Kreator
+                    </button>
+                </div>
+            </div>
+
+            <!-- GALLERY & ALBUM PLATFORM SECTION -->
+            <div id="galeri-section" class="space-y-8 pt-8 border-t border-luxury-border">
+                
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="font-serif text-2xl font-bold text-white tracking-wide">Galeri & Album Visual</h2>
+                        <p class="text-xs text-luxury-muted mt-1">Pilih kategori untuk menyaring koleksi karya digital.</p>
+                    </div>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="currentFilter = 'all'" :class="currentFilter === 'all' ? 'bg-luxury-gold text-black font-bold' : 'glass-luxury text-slate-400 hover:text-white'" class="px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition">Semua</button>
+                        <button @click="currentFilter = 'cinematic'" :class="currentFilter === 'cinematic' ? 'bg-luxury-gold text-black font-bold' : 'glass-luxury text-slate-400 hover:text-white'" class="px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition">Cinematic</button>
+                        <button @click="currentFilter = 'architecture'" :class="currentFilter === 'architecture' ? 'bg-luxury-gold text-black font-bold' : 'glass-luxury text-slate-400 hover:text-white'" class="px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition">Arsitektur</button>
+                        <button @click="currentFilter = 'abstract'" :class="currentFilter === 'abstract' ? 'bg-luxury-gold text-black font-bold' : 'glass-luxury text-slate-400 hover:text-white'" class="px-4 py-2 rounded-lg text-xs tracking-wider uppercase transition">Abstraksi</button>
+                    </div>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <template x-for="item in filteredGallery" :key="item.id">
+                        <div class="glass-luxury rounded-2xl overflow-hidden group border border-luxury-border hover:border-luxury-gold/50 transition-all duration-300 flex flex-col justify-between">
+                            <!-- Image Frame with Zoom Effect -->
+                            <div class="relative h-64 overflow-hidden bg-luxury-card">
+                                <img :src="item.image" :alt="item.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-luxury-bg via-transparent to-transparent opacity-60"></div>
+                                <span class="absolute top-3 right-3 px-3 py-1 rounded-full text-[10px] font-mono tracking-wider uppercase glass-luxury text-luxury-gold border border-luxury-gold/30" x-text="item.category"></span>
+                            </div>
+                            <!-- Card Info -->
+                            <div class="p-5 space-y-3">
+                                <h3 class="font-serif text-lg font-bold text-white group-hover:text-luxury-gold transition" x-text="item.title"></h3>
+                                <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed" x-text="item.desc"></p>
+                                <div class="flex items-center justify-between pt-3 border-t border-luxury-border text-[11px] text-luxury-muted">
+                                    <span x-text="item.date"></span>
+                                    <button @click="openLightbox(item)" class="text-luxury-gold hover:underline flex items-center space-x-1 font-semibold">
+                                        <span>Lihat Detail</span>
+                                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= PAGE 2: ABOUT ================= -->
+        <div x-show="activeTab === 'about'" x-transition.opacity class="space-y-12 max-w-4xl mx-auto pt-6">
+            <div class="text-center space-y-4">
+                <span class="text-xs uppercase tracking-widest text-luxury-gold font-mono">Tentang Platform</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-white">Kurator & Visi Di Balik Nazgalery</h2>
+            </div>
+
+            <div class="glass-luxury p-8 md:p-12 rounded-3xl space-y-6 border border-luxury-border">
+                <p class="text-sm md:text-base text-slate-300 leading-relaxed font-light">
+                    <strong class="text-luxury-gold font-semibold">Nazgalery</strong> didirikan sebagai manifestasi kecintaan terhadap estetika visual tingkat tinggi. Kami percaya bahwa setiap karya seni, foto, dan konsep arsitektur layak untuk ditampilkan dalam panggung digital yang bersih, elegan, dan tanpa gangguan visual murahan.
+                </p>
+                <p class="text-sm md:text-base text-slate-300 leading-relaxed font-light">
+                    Dengan mengusung konsep <em class="text-white font-serif">Minimalist Luxury</em> dan penerapan teknologi antarmuka modern berstandar tinggi, platform ini dirancang untuk memberikan pengalaman navigasi yang imersif bagi para penikmat seni, kolektor, maupun profesional kreatif.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-luxury-border text-center">
+                    <div class="p-4 rounded-xl glass-luxury">
+                        <div class="font-serif text-3xl font-bold text-luxury-gold">100+</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Karya Dikurasi</div>
+                    </div>
+                    <div class="p-4 rounded-xl glass-luxury">
+                        <div class="font-serif text-3xl font-bold text-luxury-gold">50%</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Glass Blur Index</div>
+                    </div>
+                    <div class="p-4 rounded-xl glass-luxury">
+                        <div class="font-serif text-3xl font-bold text-luxury-gold">24/7</div>
+                        <div class="text-xs text-slate-400 uppercase tracking-wider mt-1">Server uptime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3: PRICING ================= -->
+        <div x-show="activeTab === 'pricing'" x-transition.opacity class="space-y-12 max-w-5xl mx-auto pt-6">
+            <div class="text-center space-y-4">
+                <span class="text-xs uppercase tracking-widest text-luxury-gold font-mono">Paket Eksklusif</span>
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-white">Investasi Akses & Kolaborasi</h2>
+                <p class="text-xs md:text-sm text-slate-400">Pilih tingkat akses galeri privat dan hak cipta komersial sesuai kebutuhan Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tier 1 -->
+                <div class="glass-luxury p-8 rounded-3xl flex flex-col justify-between border border-luxury-border">
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono uppercase text-luxury-muted">Standar</span>
+                        <h3 class="font-serif text-xl font-bold text-white">Kolektor Publik</h3>
+                        <div class="text-3xl font-serif font-bold text-luxury-gold">Gratis</div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Akses penuh melihat seluruh katalog galeri publik resolusi standar.</p>
+                        <ul class="space-y-2.5 text-xs text-slate-300 pt-4 border-t border-luxury-border">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Akses Arsip Publik</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Filter Kategori Lengkap</span></li>
+                        </ul>
+                    </div>
+                    <button class="mt-8 w-full py-3 rounded-xl glass-luxury border border-luxury-gold/40 text-xs font-semibold uppercase tracking-wider text-white hover:bg-luxury-gold hover:text-black transition">Mulai Gratis</button>
+                </div>
+
+                <!-- Tier 2 (Featured) -->
+                <div class="glass-luxury p-8 rounded-3xl flex flex-col justify-between border-2 border-luxury-gold shadow-gold-glow relative bg-luxury-card/90">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-luxury-gold text-black text-[10px] font-bold uppercase tracking-widest">Terpopuler</div>
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono uppercase text-luxury-gold">Eksklusif</span>
+                        <h3 class="font-serif text-xl font-bold text-white">VIP Connoisseur</h3>
+                        <div class="text-3xl font-serif font-bold text-luxury-gold">$49 <span class="text-xs text-slate-400 font-sans font-normal">/ selamanya</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Akses unduh karya resolusi penuh 4K dan album privat rahasia.</p>
+                        <ul class="space-y-2.5 text-xs text-slate-200 pt-4 border-t border-luxury-border">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Unduh Resolusi Penuh (4K)</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Akses Album Privat VIP</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Lisensi Penggunaan Pribadi</span></li>
+                        </ul>
+                    </div>
+                    <button class="mt-8 w-full py-3 rounded-xl bg-luxury-gold text-black text-xs font-bold uppercase tracking-wider hover:bg-luxury-goldLight transition">Pilih VIP Pass</button>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="glass-luxury p-8 rounded-3xl flex flex-col justify-between border border-luxury-border">
+                    <div class="space-y-4">
+                        <span class="text-xs font-mono uppercase text-luxury-muted">Komersial</span>
+                        <h3 class="font-serif text-xl font-bold text-white">Lisensi Korporat</h3>
+                        <div class="text-3xl font-serif font-bold text-luxury-gold">$199 <span class="text-xs text-slate-400 font-sans font-normal">/ proyek</span></div>
+                        <p class="text-xs text-slate-400 leading-relaxed">Hak cipta komersial penuh untuk kebutuhan brand, iklan, dan arsitektur.</p>
+                        <ul class="space-y-2.5 text-xs text-slate-300 pt-4 border-t border-luxury-border">
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Lisensi Komersial Penuh</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>File Mentah (RAW / PSD)</span></li>
+                            <li class="flex items-center space-x-2"><i data-lucide="check" class="w-4 h-4 text-luxury-gold"></i><span>Konsultasi Kurasi Langsung</span></li>
+                        </ul>
+                    </div>
+                    <button class="mt-8 w-full py-3 rounded-xl glass-luxury border border-luxury-gold/40 text-xs font-semibold uppercase tracking-wider text-white hover:bg-luxury-gold hover:text-black transition">Hubungi Kurator</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4: DASHBOARD ================= -->
+        <div x-show="activeTab === 'dashboard'" x-transition.opacity class="space-y-8 pt-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+   
