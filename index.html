@@ -32,8 +32,7 @@
                         serif: ['Cinzel', 'serif']
                     },
                     boxShadow: {
-                        'gold-glow': '0 0 30px -5px rgba(223, 178, 89, 0.25)',
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+                        'gold-glow': '0 0 30px -5px rgba(223, 178, 89, 0.25)'
                     }
                 }
             }
@@ -63,7 +62,7 @@
 </head>
 <body class="bg-luxury-bg text-slate-200 font-sans antialiased h-full flex flex-col justify-between selection:bg-luxury-gold selection:text-black">
 
-    <!-- Ambient Gold Glow Background Elements -->
+    <!-- Ambient Glowing Orbs -->
     <div class="fixed top-0 left-1/4 w-[400px] h-[400px] bg-luxury-gold/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
     <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-luxury-gold/5 rounded-full blur-[180px] pointer-events-none -z-10"></div>
 
@@ -118,7 +117,7 @@
                     Koleksi Visual Mahakarya & <span class="gold-gradient-text">Album Kurasi</span>
                 </h1>
                 <p class="text-xs md:text-base text-slate-400 leading-relaxed font-light">
-                    Selamat datang di Nazgalery. Ruang pamer digital eksklusif yang memadukan fotografi sinematik, desain futuristik, dan arsitektur visual berkelas tinggi.
+                    Selamat datang di Nazgalery. Ruang pamer digital eksklusif yang memadukan fotografi sinematik, diseño futurista, y arquitectura visual.
                 </p>
                 <div class="flex justify-center gap-3 pt-2">
                     <a href="#galeri-section" class="px-6 py-3 rounded-xl bg-luxury-gold text-black font-semibold text-xs uppercase tracking-widest hover:bg-luxury-goldLight transition shadow-gold-glow">
@@ -135,18 +134,18 @@
                         <p class="text-xs text-luxury-muted mt-1">Pilih kategori untuk menyaring koleksi karya.</p>
                     </div>
 
-                    <!-- Filter Buttons -->
+                    <!-- Filter Buttons (CORREGIDO PARA MÓVIL) -->
                     <div class="flex flex-wrap gap-2">
-                        <button onclick="filterGallery('all')" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase bg-luxury-gold text-black font-bold transition">Semua</button>
-                        <button onclick="filterGallery('cinematic')" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Cinematic</button>
-                        <button onclick="filterGallery('architecture')" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Arsitektur</button>
-                        <button onclick="filterGallery('abstract')" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Abstraksi</button>
+                        <button onclick="filterGallery('all', this)" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase bg-luxury-gold text-black font-bold transition">Semua</button>
+                        <button onclick="filterGallery('cinematic', this)" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Cinematic</button>
+                        <button onclick="filterGallery('architecture', this)" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Arsitektur</button>
+                        <button onclick="filterGallery('abstract', this)" class="filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition">Abstraksi</button>
                     </div>
                 </div>
 
                 <!-- Gallery Grid -->
                 <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Populated by JavaScript -->
+                    <!-- Las imágenes cargarán aquí por JavaScript -->
                 </div>
             </div>
         </div>
@@ -155,27 +154,10 @@
         <div id="page-about" class="page-section space-y-8 max-w-4xl mx-auto pt-4">
             <div class="text-center space-y-3">
                 <span class="text-xs uppercase tracking-widest text-luxury-gold font-mono">Tentang Platform</span>
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-white">Kurator & Visi Di Balik Nazgalery</h2>
+                <h2 class="font-serif text-3xl font-bold text-white">Kurator & Visi</h2>
             </div>
-
-            <div class="glass-luxury p-6 md:p-10 rounded-3xl space-y-5 border border-luxury-border">
-                <p class="text-xs md:text-base text-slate-300 leading-relaxed font-light">
-                    <strong class="text-luxury-gold font-semibold">Nazgalery</strong> didirikan sebagai manifestasi kecintaan terhadap estetika visual tingkat tinggi. Kami percaya bahwa setiap karya seni, foto, dan konsep arsitektur layak untuk ditampilkan dalam panggung digital yang bersih dan elegan.
-                </p>
-                <div class="grid grid-cols-3 gap-4 pt-4 border-t border-luxury-border text-center">
-                    <div class="p-3 rounded-xl glass-luxury">
-                        <div class="font-serif text-2xl font-bold text-luxury-gold">100+</div>
-                        <div class="text-[10px] text-slate-400 uppercase mt-1">Karya</div>
-                    </div>
-                    <div class="p-3 rounded-xl glass-luxury">
-                        <div class="font-serif text-2xl font-bold text-luxury-gold">50%</div>
-                        <div class="text-[10px] text-slate-400 uppercase mt-1">Glass Blur</div>
-                    </div>
-                    <div class="p-3 rounded-xl glass-luxury">
-                        <div class="font-serif text-2xl font-bold text-luxury-gold">24/7</div>
-                        <div class="text-[10px] text-slate-400 uppercase mt-1">Online</div>
-                    </div>
-                </div>
+            <div class="glass-luxury p-6 rounded-3xl space-y-5 border border-luxury-border text-center">
+                <p class="text-xs md:text-base text-slate-300">Platform eksklusif yang memadukan fotografi sinematik dan desain bersih.</p>
             </div>
         </div>
 
@@ -183,69 +165,36 @@
         <div id="page-pricing" class="page-section space-y-8 max-w-5xl mx-auto pt-4">
             <div class="text-center space-y-3">
                 <span class="text-xs uppercase tracking-widest text-luxury-gold font-mono">Paket Eksklusif</span>
-                <h2 class="font-serif text-3xl md:text-5xl font-bold text-white">Investasi Akses & Kolaborasi</h2>
+                <h2 class="font-serif text-3xl font-bold text-white">Investasi Akses</h2>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-luxury p-6 rounded-3xl flex flex-col justify-between border border-luxury-border">
-                    <div class="space-y-3">
-                        <span class="text-xs font-mono uppercase text-luxury-muted">Standar</span>
-                        <h3 class="font-serif text-xl font-bold text-white">Kolektor Publik</h3>
-                        <div class="text-3xl font-serif font-bold text-luxury-gold">Gratis</div>
-                        <p class="text-xs text-slate-400">Akses penuh melihat seluruh katalog galeri publik.</p>
-                    </div>
-                    <button onclick="alert('Paket Standar Aktif!')" class="mt-6 w-full py-3 rounded-xl glass-luxury border border-luxury-gold/40 text-xs font-semibold uppercase text-white hover:bg-luxury-gold hover:text-black transition">Mulai Gratis</button>
+                <!-- Package 1 -->
+                <div class="glass-luxury p-6 rounded-3xl border border-luxury-border">
+                    <div class="text-3xl font-serif font-bold text-luxury-gold mb-4">Gratis</div>
+                    <button onclick="alert('Paket Gratis Aktif!')" class="w-full py-3 rounded-xl bg-luxury-card text-white text-xs font-bold uppercase transition">Pilih</button>
                 </div>
-
-                <div class="glass-luxury p-6 rounded-3xl flex flex-col justify-between border-2 border-luxury-gold shadow-gold-glow bg-luxury-card/90 relative">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-luxury-gold text-black text-[9px] font-bold uppercase tracking-widest">Terpopuler</div>
-                    <div class="space-y-3">
-                        <span class="text-xs font-mono uppercase text-luxury-gold">Eksklusif</span>
-                        <h3 class="font-serif text-xl font-bold text-white">VIP Connoisseur</h3>
-                        <div class="text-3xl font-serif font-bold text-luxury-gold">$49</div>
-                        <p class="text-xs text-slate-400">Akses unduh karya resolusi penuh 4K dan album privat.</p>
-                    </div>
-                    <button onclick="alert('Mengarahkan ke pembayaran VIP...')" class="mt-6 w-full py-3 rounded-xl bg-luxury-gold text-black text-xs font-bold uppercase hover:bg-luxury-goldLight transition">Pilih VIP Pass</button>
+                <!-- Package 2 -->
+                <div class="glass-luxury p-6 rounded-3xl border border-luxury-gold bg-luxury-card/90">
+                    <div class="text-3xl font-serif font-bold text-luxury-gold mb-4">$49</div>
+                    <button onclick="alert('Membuka pembayaran VIP...')" class="w-full py-3 rounded-xl bg-luxury-gold text-black text-xs font-bold uppercase transition">VIP Pass</button>
                 </div>
-
-                <div class="glass-luxury p-6 rounded-3xl flex flex-col justify-between border border-luxury-border">
-                    <div class="space-y-3">
-                        <span class="text-xs font-mono uppercase text-luxury-muted">Komersial</span>
-                        <h3 class="font-serif text-xl font-bold text-white">Lisensi Korporat</h3>
-                        <div class="text-3xl font-serif font-bold text-luxury-gold">$199</div>
-                        <p class="text-xs text-slate-400">Hak cipta komersial penuh untuk kebutuhan brand.</p>
-                    </div>
-                    <button onclick="alert('Menghubungkan ke kurator korporat...')" class="mt-6 w-full py-3 rounded-xl glass-luxury border border-luxury-gold/40 text-xs font-semibold uppercase text-white hover:bg-luxury-gold hover:text-black transition">Hubungi Kurator</button>
+                <!-- Package 3 -->
+                <div class="glass-luxury p-6 rounded-3xl border border-luxury-border">
+                    <div class="text-3xl font-serif font-bold text-luxury-gold mb-4">$199</div>
+                    <button onclick="alert('Menghubungi kurator...')" class="w-full py-3 rounded-xl bg-luxury-card text-white text-xs font-bold uppercase transition">Lisensi</button>
                 </div>
             </div>
         </div>
 
         <!-- ================= PAGE 4: DASHBOARD ================= -->
         <div id="page-dashboard" class="page-section space-y-6 pt-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <span class="text-xs uppercase tracking-widest text-luxury-gold font-mono">Control Panel</span>
-                    <h2 class="font-serif text-2xl md:text-3xl font-bold text-white">Dashboard Kurasi</h2>
-                </div>
-                <div class="px-3 py-1 rounded-xl glass-luxury border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-                    ● Server Optimal
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border space-y-1">
+            <h2 class="font-serif text-2xl md:text-3xl font-bold text-white">Dashboard Kurasi</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border">
                     <div class="text-[10px] text-luxury-muted uppercase">Total Kunjungan</div>
                     <div class="font-serif text-2xl font-bold text-white">24,892</div>
                 </div>
-                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border space-y-1">
-                    <div class="text-[10px] text-luxury-muted uppercase">Unduhan Album</div>
-                    <div class="font-serif text-2xl font-bold text-luxury-gold">1,420</div>
-                </div>
-                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border space-y-1">
-                    <div class="text-[10px] text-luxury-muted uppercase">Koleksi Aktif</div>
-                    <div class="font-serif text-2xl font-bold text-white">36</div>
-                </div>
-                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border space-y-1">
+                <div class="glass-luxury p-4 rounded-2xl border border-luxury-border">
                     <div class="text-[10px] text-luxury-muted uppercase">Status VIP</div>
                     <div class="font-serif text-2xl font-bold text-luxury-gold">Active</div>
                 </div>
@@ -255,44 +204,111 @@
     </main>
 
     <!-- MODAL LIGHTBOX -->
-    <div id="detail-modal" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-        <div class="glass-luxury border border-luxury-gold/30 rounded-3xl max-w-lg w-full p-6 relative space-y-4 bg-luxury-card">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg font-bold">✕</button>
+    <div id="detail-modal" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+        <div class="glass-luxury border border-luxury-gold/30 rounded-3xl max-w-lg w-full p-6 relative space-y-4">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl font-bold">×</button>
             <div id="modal-category" class="text-xs font-mono uppercase tracking-widest text-luxury-gold"></div>
             <h3 id="modal-title" class="font-serif text-xl font-bold text-white"></h3>
             <div class="rounded-xl overflow-hidden h-56 bg-black">
                 <img id="modal-image" src="" alt="" class="w-full h-full object-cover">
             </div>
-            <p id="modal-desc" class="text-xs text-slate-300 leading-relaxed"></p>
-            <button onclick="alert('Berhasil mengunduh resolusi penuh!')" class="w-full py-2.5 rounded-xl bg-luxury-gold text-black font-semibold text-xs uppercase tracking-wider hover:bg-luxury-goldLight transition">
+            <p id="modal-desc" class="text-xs text-slate-300"></p>
+            <button onclick="alert('Berhasil mengunduh!')" class="w-full py-3 rounded-xl bg-luxury-gold text-black font-semibold text-xs uppercase tracking-wider transition">
                 Unduh Resolusi Penuh
             </button>
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="glass-luxury border-t border-luxury-border mt-16 py-6 px-6 text-center text-xs text-luxury-muted">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-            <div>NAZGALERY © 2026. All Rights Reserved.</div>
-            <div class="flex space-x-4 text-slate-400">
-                <button onclick="switchTab('home')" class="hover:text-luxury-gold">Home</button>
-                <button onclick="switchTab('about')" class="hover:text-luxury-gold">About</button>
-                <button onclick="switchTab('pricing')" class="hover:text-luxury-gold">Pricing</button>
-                <button onclick="switchTab('dashboard')" class="hover:text-luxury-gold">Dashboard</button>
-            </div>
-        </div>
+    <footer class="glass-luxury border-t border-luxury-border mt-10 py-6 px-6 text-center text-xs text-luxury-muted">
+        <div>NAZGALERY © 2026. All Rights Reserved.</div>
     </footer>
 
-    <!-- JAVASCRIPT HANDLER (100% RELIABLE) -->
+    <!-- JAVASCRIPT CORREGIDO PARA MÓVIL -->
     <script>
         const galleryData = [
-            { id: 1, title: 'Elysian Architecture No. 9', category: 'architecture', desc: 'Eksplorasi garis geometris minimalis pada struktur beton monolitik di bawah cahaya senja.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', date: '04 Nov 2026' },
-            { id: 2, title: 'Cyberpunk Obsidian Horizon', category: 'cinematic', desc: 'Visualisasi kota futuristik dengan kontras warna gelap obsidian dan kilau cahaya neon keemasan.', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop', date: '01 Nov 2026' },
-            { id: 3, title: 'Monochrome Fluidity', category: 'abstract', desc: 'Studi tekstur cairan logam dalam bentuk geometris mengalir yang elegan dan bersih.', image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop', date: '28 Okt 2026' },
-            { id: 4, title: 'The Golden Ratio Sanctuary', category: 'architecture', desc: 'Interior ruangan privat dengan konsep zen modern, memadukan kayu eboni dan pencahayaan hangat.', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop', date: '20 Okt 2026' },
-            { id: 5, title: 'Nocturnal Solitude', category: 'cinematic', desc: 'Potret sinematik minimalis di tengah keheningan malam kota metropolitan.', image: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop', date: '15 Okt 2026' },
-            { id: 6, title: 'Aetheria Prime Particle', category: 'abstract', desc: 'Representasi visual partikel digital yang menyatu dalam formasi harmoni kosmik.', image: 'https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=800&auto=format&fit=crop', date: '10 Okt 2026' }
+            { id: 1, title: 'Elysian Architecture', category: 'architecture', desc: 'Líneas geométricas bajo luz suave.', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop', date: '04 Nov 2026' },
+            { id: 2, title: 'Cyberpunk Horizon', category: 'cinematic', desc: 'Ciudad futurista en la oscuridad.', image: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800&auto=format&fit=crop', date: '01 Nov 2026' },
+            { id: 3, title: 'Monochrome Fluidity', category: 'abstract', desc: 'Líquido metálico abstracto.', image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?q=80&w=800&auto=format&fit=crop', date: '28 Okt 2026' },
+            { id: 4, title: 'Golden Sanctuary', category: 'architecture', desc: 'Interior zen con madera de ébano.', image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop', date: '20 Okt 2026' },
+            { id: 5, title: 'Nocturnal Solitude', category: 'cinematic', desc: 'Soledad en la noche metropolitana.', image: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=800&auto=format&fit=crop', date: '15 Okt 2026' }
         ];
 
         function switchTab(tabId) {
-            // Hide a
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('page-' + tabId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn, .mob-btn').forEach(el => el.classList.remove('text-luxury-gold', 'font-bold'));
+            
+            let deskNav = document.getElementById('nav-' + tabId);
+            let mobNav = document.getElementById('mob-' + tabId);
+            
+            if(deskNav) deskNav.classList.add('text-luxury-gold', 'font-bold');
+            if(mobNav) mobNav.classList.add('text-luxury-gold', 'font-bold');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderGallery(filter = 'all') {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+
+            const filtered = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
+
+            filtered.forEach(item => {
+                // Creamos los elementos de forma segura
+                const card = document.createElement('div');
+                card.className = 'glass-luxury rounded-2xl overflow-hidden border border-luxury-border flex flex-col justify-between';
+                
+                // Evitamos el uso de comillas dentro del HTML que rompan en Safari móvil
+                let imgData = JSON.stringify(item).replace(/'/g, "\\'");
+
+                card.innerHTML = `
+                    <div class="relative h-56 overflow-hidden bg-luxury-card">
+                        <img src="${item.image}" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 px-2 py-1 rounded-full text-[9px] font-mono uppercase glass-luxury text-luxury-gold border border-luxury-gold/30">${item.category}</span>
+                    </div>
+                    <div class="p-4 space-y-2">
+                        <h3 class="font-serif text-base font-bold text-white">${item.title}</h3>
+                        <p class="text-xs text-slate-400">${item.desc}</p>
+                        <div class="pt-3 border-t border-luxury-border text-right">
+                            <button onclick='openModal(${imgData})' class="text-luxury-gold text-xs font-semibold">Detalles →</button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Modificado para evitar errores con "event"
+        function filterGallery(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.className = 'filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase glass-luxury text-slate-400 hover:text-white transition';
+            });
+            
+            if(btnElement) {
+                btnElement.className = 'filter-btn px-3 py-1.5 rounded-lg text-xs tracking-wider uppercase bg-luxury-gold text-black font-bold transition';
+            }
+            
+            renderGallery(category);
+        }
+
+        function openModal(item) {
+            document.getElementById('modal-category').innerText = item.category;
+            document.getElementById('modal-title').innerText = item.title;
+            document.getElementById('modal-image').src = item.image;
+            document.getElementById('modal-desc').innerText = item.desc;
+            document.getElementById('detail-modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('detail-modal').style.display = 'none';
+        }
+
+        // Inicialización segura para navegadores móviles
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGallery('all');
+        });
+    </script>
+</body>
+</html>
